@@ -15,11 +15,27 @@ void main() {
   );
 }
 
-class ImagePage extends StatelessWidget {
+class ImagePage extends StatefulWidget {
   const ImagePage({super.key});
 
   @override
+  State<ImagePage> createState() => _ImagePageState();
+}
+
+class _ImagePageState extends State<ImagePage> {
+  @override
   Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class ImagePage extends StatelessWidget {
+  const ImagePage({super.key});
+  int leftImageNum = 4;
+  @override
+  Widget build(BuildContext context) {
+    leftImageNum = 9;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -30,23 +46,30 @@ class ImagePage extends StatelessWidget {
             color: Colors.indigo.shade900,
           ),
         ),
-        Row(
-          children: [
-            Expanded(
-              // flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Image.asset('images/5596243.png'),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Expanded(
+                // flex: 2,
+                child: TextButton(
+                  onPressed: () {
+                    print("Left Button got pressed");
+                  },
+                  child: Image.asset('images/image-$leftImageNum.png'),
+                ),
               ),
-            ),
-            Expanded(
-              // flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Image.asset('images/5596243.png'),
+              Expanded(
+                // flex: 1,
+                child: TextButton(
+                  onPressed: () {
+                    print("Right button got pressed");
+                  },
+                  child: Image.asset('images/image-8.png'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
